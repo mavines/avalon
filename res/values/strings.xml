@@ -11,7 +11,8 @@
     <string name="gwenevere">Gwenevere</string>
     <string name="galahad">Galahad</string>
     <string name="bevidere">Bevidere</string>
-    <string name="mordrid">Mordrid</string>
+    <string name="mordred">Mordred</string>
     <string name="oberon">Oberon</string>
+    <string name="start">Start</string>
 
 </resources>
