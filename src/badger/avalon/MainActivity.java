@@ -14,7 +14,7 @@ public class MainActivity extends Activity {
 	private boolean percival = false;
 	private boolean galahad = false;
 	private boolean gwenevere = false;
-	private boolean bevidere = false;
+	private boolean bedevere = false;
 	private boolean morganna = false;
 	private boolean mordred = false;
 	private boolean oberon = false;
@@ -50,8 +50,8 @@ public class MainActivity extends Activity {
 		ToggleButton gwenevereButton = (ToggleButton)findViewById(R.id.gwenevereButton);
 		gwenevere = gwenevereButton.isChecked();
 
-		ToggleButton bevidereButton = (ToggleButton)findViewById(R.id.bevidereButton);
-		bevidere = bevidereButton.isChecked();
+		ToggleButton bedevereButton = (ToggleButton)findViewById(R.id.bedevereButton);
+		bedevere = bedevereButton.isChecked();
 
 		ToggleButton morgannaButton = (ToggleButton)findViewById(R.id.morgannaButton);
 		morganna = morgannaButton.isChecked();
