@@ -33,11 +33,11 @@
         android:textOn="@string/galahad" />
 
     <ToggleButton
-        android:id="@+id/gwenevereButton"
+        android:id="@+id/guinevereButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textOff="@string/gwenevere"
-        android:textOn="@string/gwenevere" />
+        android:textOff="@string/guinevere"
+        android:textOn="@string/guinevere" />
 
     <ToggleButton
         android:id="@+id/bedevereButton"
