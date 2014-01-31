@@ -1,15 +1,14 @@
 package badger.avalon;
 
 import android.app.Activity;
-import android.content.Context;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ToggleButton;
+import android.widget.CheckBox;
+import android.widget.CheckBox;
 
 public class MainActivity extends Activity {
 	private static final String TAG = "MainActivity";
@@ -28,22 +27,6 @@ public class MainActivity extends Activity {
 	private boolean oberon = false;
 	private boolean lancelot = false;
 
-	private int finalResetSound;
-	private int guinevereSound;
-	private int lancelotResetSound;
-	private int lancelotSound;
-	private int merlinNoMordredSound;
-	private int merlinResetSound;
-	private int merlinYesMordredSound;
-	private int minionNoOberonNoLancelotSound;
-	private int minionNoOberonYesLancelotSound;
-	private int minionResetSound;
-	private int minionYesOberonNoLancelotSound;
-	private int minionYesOberonYesLancelotSound;
-	private int percivalNoMorgannaSound;
-	private int percivalResetSound;
-	private int percivalYesMorgannaSound;
-	private int startSound;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,32 +44,32 @@ public class MainActivity extends Activity {
 	public void start(View view) {
 		Log.d(TAG, "Starting!");
 
-		ToggleButton merlinButton = (ToggleButton) findViewById(R.id.merlinButton);
-		merlin = merlinButton.isChecked();
+		CheckBox merlinCheckBox = (CheckBox) findViewById(R.id.merlinCheckBox);
+		merlin = merlinCheckBox.isChecked();
+	
+		CheckBox percivalCheckBox = (CheckBox) findViewById(R.id.percivalCheckBox);
+		percival = percivalCheckBox.isChecked();
 
-		ToggleButton percivalButton = (ToggleButton) findViewById(R.id.percivalButton);
-		percival = percivalButton.isChecked();
+		CheckBox galahadCheckBox = (CheckBox) findViewById(R.id.galahadCheckBox);
+		galahad = galahadCheckBox.isChecked();
 
-		ToggleButton galahadButton = (ToggleButton) findViewById(R.id.galahadButton);
-		galahad = galahadButton.isChecked();
+		CheckBox guinevereCheckBox = (CheckBox) findViewById(R.id.guinevereCheckBox);
+		guinevere = guinevereCheckBox.isChecked();
 
-		ToggleButton guinevereButton = (ToggleButton) findViewById(R.id.guinevereButton);
-		guinevere = guinevereButton.isChecked();
+		CheckBox bedevereCheckBox = (CheckBox) findViewById(R.id.bedevereCheckBox);
+		bedevere = bedevereCheckBox.isChecked();
 
-		ToggleButton bedevereButton = (ToggleButton) findViewById(R.id.bedevereButton);
-		bedevere = bedevereButton.isChecked();
+		CheckBox morgannaCheckBox = (CheckBox) findViewById(R.id.morgannaCheckBox);
+		morganna = morgannaCheckBox.isChecked();
 
-		ToggleButton morgannaButton = (ToggleButton) findViewById(R.id.morgannaButton);
-		morganna = morgannaButton.isChecked();
+		CheckBox mordredCheckBox = (CheckBox) findViewById(R.id.mordredCheckBox);
+		mordred = mordredCheckBox.isChecked();
 
-		ToggleButton mordredButton = (ToggleButton) findViewById(R.id.mordredButton);
-		mordred = mordredButton.isChecked();
+		CheckBox oberonCheckBox = (CheckBox) findViewById(R.id.oberonCheckBox);
+		oberon = oberonCheckBox.isChecked();
 
-		ToggleButton oberonButton = (ToggleButton) findViewById(R.id.oberonButton);
-		oberon = oberonButton.isChecked();
-
-		ToggleButton lancelotButton = (ToggleButton) findViewById(R.id.lancelotButton);
-		lancelot = lancelotButton.isChecked();
+		CheckBox lancelotCheckBox = (CheckBox) findViewById(R.id.lancelotCheckBox);
+		lancelot = lancelotCheckBox.isChecked();
 
 		playClip();
 	}
