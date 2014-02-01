@@ -67,8 +67,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
                 android:background="@null"
+                android:onClick="showGalahadRules"
                 android:scaleType="centerCrop"
-                android:src="@drawable/scroll" />
+                android:src="@drawable/ic_menu_info_details" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -93,8 +95,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
                 android:background="@null"
+                android:onClick="showGuinevereRules"
                 android:scaleType="centerCrop"
-                android:src="@drawable/scroll" />
+                android:src="@drawable/ic_menu_info_details" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -105,22 +109,24 @@
             android:orientation="horizontal" >
 
             <CheckBox
-                android:id="@+id/bedevereCheckBox"
+                android:id="@+id/bedivereCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bedevere"
+                android:text="@string/bedivere"
                 android:textSize="@dimen/font_size" />
 
             <ImageButton
-                android:id="@+id/bedevereInfoButton"
+                android:id="@+id/bedivereInfoButton"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
                 android:background="@null"
+                android:onClick="showBedivereRules"
                 android:scaleType="centerCrop"
-                android:src="@drawable/scroll" />
+                android:src="@drawable/ic_menu_info_details" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -146,8 +152,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
                 android:background="@null"
+                android:onClick="showLancelotRules"
                 android:scaleType="centerCrop"
-                android:src="@drawable/scroll" />
+                android:src="@drawable/ic_menu_info_details" />
+
         </RelativeLayout>
 
         <RelativeLayout

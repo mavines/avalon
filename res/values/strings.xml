@@ -10,9 +10,14 @@
     <string name="lancelot">Lancelot</string>
     <string name="guinevere">Guinevere</string>
     <string name="galahad">Galahad</string>
-    <string name="bedevere">Bedevere</string>
+    <string name="bedivere">Bedivere</string>
     <string name="mordred">Mordred</string>
     <string name="oberon">Oberon</string>
     <string name="start">Start</string>
+    <string name="bedivere_rules">Some Rules for bedivere</string>
+    <string name="lancelot_rules">Some Rules for lancelot</string>
+    <string name="guinevere_rules">Some Rules for guinevere</string>
+    <string name="galahad_rules">Some Rules for galahad</string>
+    <string name="ok">Okay</string>
 
 </resources>

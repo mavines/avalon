@@ -1,6 +1,8 @@
 package badger.avalon;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -21,7 +23,7 @@ public class MainActivity extends Activity {
 	private boolean percival = false;
 	private boolean galahad = false;
 	private boolean guinevere = false;
-	private boolean bedevere = false;
+	private boolean bedivere = false;
 	private boolean morganna = false;
 	private boolean mordred = false;
 	private boolean oberon = false;
@@ -41,6 +43,43 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	public void showLancelotRules(View view)
+	{
+		showRules(R.string.lancelot, R.string.lancelot_rules);
+	}
+	
+	public void showGuinevereRules(View view)
+	{
+		showRules(R.string.guinevere, R.string.guinevere_rules);
+	}
+	
+	public void showGalahadRules(View view)
+	{
+		showRules(R.string.galahad, R.string.galahad_rules);
+	}
+	
+	public void showBedivereRules(View view)
+	{
+		showRules(R.string.bedivere, R.string.bedivere_rules);
+	}
+	
+	private void showRules(int titleId, int rulesId)
+	{
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+		builder.setMessage(rulesId)
+		       .setTitle(titleId);
+
+		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+	           public void onClick(DialogInterface dialog, int id) {
+	               dialog.dismiss();
+	           }
+	       });
+		
+		AlertDialog dialog = builder.create();
+		dialog.show();
+	}
+	
 	public void start(View view) {
 		Log.d(TAG, "Starting!");
 
@@ -56,8 +95,8 @@ public class MainActivity extends Activity {
 		CheckBox guinevereCheckBox = (CheckBox) findViewById(R.id.guinevereCheckBox);
 		guinevere = guinevereCheckBox.isChecked();
 
-		CheckBox bedevereCheckBox = (CheckBox) findViewById(R.id.bedevereCheckBox);
-		bedevere = bedevereCheckBox.isChecked();
+		CheckBox bedivereCheckBox = (CheckBox) findViewById(R.id.bedivereCheckBox);
+		bedivere = bedivereCheckBox.isChecked();
 
 		CheckBox morgannaCheckBox = (CheckBox) findViewById(R.id.morgannaCheckBox);
 		morganna = morgannaCheckBox.isChecked();
