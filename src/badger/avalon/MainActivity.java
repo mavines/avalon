@@ -7,10 +7,11 @@ import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	private static final String TAG = "MainActivity";
@@ -29,7 +30,6 @@ public class MainActivity extends Activity {
 	private boolean oberon = false;
 	private boolean lancelot = false;
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,49 +43,80 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	public void showLancelotRules(View view)
-	{
-		showRules(R.string.lancelot, R.string.lancelot_rules);
+	public void showLancelotRules(View view) {
+		showRules(R.string.lancelot, R.string.lancelot_rules,
+				R.string.lancelot_rules, R.string.lancelot_rules);
 	}
-	
-	public void showGuinevereRules(View view)
-	{
-		showRules(R.string.guinevere, R.string.guinevere_rules);
+
+	public void showGuinevereRules(View view) {
+		showRules(R.string.guinevere, R.string.guinevere_include,
+				R.string.guinevere_rules, R.string.guinevere_advantage);
 	}
-	
-	public void showGalahadRules(View view)
-	{
-		showRules(R.string.galahad, R.string.galahad_rules);
+
+	public void showGalahadRules(View view) {
+		showRules(R.string.galahad, R.string.galahad_include,
+				R.string.galahad_rules, R.string.galahad_advantage);
 	}
-	
-	public void showBedivereRules(View view)
-	{
-		showRules(R.string.bedivere, R.string.bedivere_rules);
+
+	public void showBedivereRules(View view) {
+		showRules(R.string.bedivere, R.string.bedivere_include,
+				R.string.bedivere_rules, R.string.bedivere_advantage);
 	}
-	
-	private void showRules(int titleId, int rulesId)
-	{
+
+	private void showRules(int titleId, int includeId, int rulesId,
+			int advantageId) {
+
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		// Get the layout inflater
+		LayoutInflater inflater = this.getLayoutInflater();
 
-		builder.setMessage(rulesId)
-		       .setTitle(titleId);
+		// Inflate and set the layout for the dialog
+		// Pass null as the parent view because its going in the dialog layout
+		View dialogView = inflater.inflate(R.layout.rules_dialog, null);
+		builder.setView(dialogView)
+				.setPositiveButton(R.string.ok,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.dismiss();
+							}
+						});
 
-		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-	           public void onClick(DialogInterface dialog, int id) {
-	               dialog.dismiss();
-	           }
-	       });
 		
 		AlertDialog dialog = builder.create();
+
+		TextView titleView = (TextView)dialogView.findViewById(R.id.dialog_title);
+		titleView.setText(titleId);
+		
+		TextView includeView = (TextView)dialogView.findViewById(R.id.dialog_include);
+		includeView.setText(includeId);
+		
+		TextView rulesView = (TextView)dialogView.findViewById(R.id.dialog_rules);
+		rulesView.setText(rulesId);
+		
+		TextView advantageView = (TextView)dialogView.findViewById(R.id.dialog_advantage);
+		advantageView.setText(advantageId);
+		
 		dialog.show();
+
+		/*
+		 * AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		 * 
+		 * builder.setMessage(rulesId) .setTitle(titleId);
+		 * 
+		 * builder.setPositiveButton(R.string.ok, new
+		 * DialogInterface.OnClickListener() { public void
+		 * onClick(DialogInterface dialog, int id) { dialog.dismiss(); } });
+		 * 
+		 * AlertDialog dialog = builder.create(); dialog.show();
+		 */
 	}
-	
+
 	public void start(View view) {
 		Log.d(TAG, "Starting!");
 
 		CheckBox merlinCheckBox = (CheckBox) findViewById(R.id.merlinCheckBox);
 		merlin = merlinCheckBox.isChecked();
-	
+
 		CheckBox percivalCheckBox = (CheckBox) findViewById(R.id.percivalCheckBox);
 		percival = percivalCheckBox.isChecked();
 
@@ -132,9 +163,10 @@ public class MainActivity extends Activity {
 				mp.release();
 			}
 		});
-		
+
 		player.start();
-		while(player.isPlaying());		
+		while (player.isPlaying())
+			;
 	}
 
 	private void playStartPhase() {

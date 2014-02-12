@@ -14,10 +14,17 @@
     <string name="mordred">Mordred</string>
     <string name="oberon">Oberon</string>
     <string name="start">Start</string>
-    <string name="bedivere_rules">Some Rules for bedivere</string>
+    <string name="bedivere_include">Bedivere may only be included with the \"Excalibur\" variant.</string>
+    <string name="bedivere_rules">When selected for a mission, if Bedivere is not given Excalibur, Bedivere MUST throw a Failure card, if he is given Excalibur he may act normally.
+        Bedivere is otherwise a loyal servant.</string>
+    <string name="bedivere_advantage">Bedivere is an advantage to the minions of Mordred</string>
     <string name="lancelot_rules">Some Rules for lancelot</string>
-    <string name="guinevere_rules">Some Rules for guinevere</string>
-    <string name="galahad_rules">Some Rules for galahad</string>
+    <string name="guinevere_include">Guinevere may only be included with the \"Lancelot\" variants #1 and #2.</string>
+    <string name="guinevere_rules">Guinevere learns the identity of both Lancelots during the reveal phase, Guinevere is otherwise a loyal servant of Arthur.</string>
+    <string name="guinevere_advantage">Guinevere is an advantage to the Loyal servants.</string>
+    <string name="galahad_include">Galahad may only be included with the \"Lady of the Lake\"" variant.</string>
+    <string name="galahad_rules">When the loyal Galahad is forced to reveal his loyalty card to the Lady of the Lake, he must select the card that indicates he is a minion of Mordred.</string>
+    <string name="galahad_advantage">Galahad is an advantage to the minions of Mordred.</string>
     <string name="ok">Okay</string>
 
 </resources>
