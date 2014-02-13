@@ -14,6 +14,7 @@
     <string name="mordred">Mordred</string>
     <string name="oberon">Oberon</string>
     <string name="start">Start</string>
+    <string name="stop">Stop</string>
     <string name="bedivere_include">Bedivere may only be included with the \"Excalibur\" variant.</string>
     <string name="bedivere_rules">When selected for a mission, if Bedivere is not given Excalibur, Bedivere MUST throw a Failure card, if he is given Excalibur he may act normally.
         Bedivere is otherwise a loyal servant.</string>
