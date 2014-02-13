@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="loyalBlue">#0066CC</color>
-    <color name="minionRed">#7A0000</color>
-
+    <color name="loyalBlue">#3385D6</color>
+    <color name="minionRed">#B22424</color>
 </resources>

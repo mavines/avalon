@@ -43,28 +43,24 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	public void showLancelotRules(View view) {
-		showRules(R.string.lancelot, R.string.lancelot_rules,
-				R.string.lancelot_rules, R.string.lancelot_rules);
-	}
 
 	public void showGuinevereRules(View view) {
 		showRules(R.string.guinevere, R.string.guinevere_include,
-				R.string.guinevere_rules, R.string.guinevere_advantage);
+				R.string.guinevere_rules, R.string.guinevere_advantage, R.color.loyalBlue);
 	}
 
 	public void showGalahadRules(View view) {
 		showRules(R.string.galahad, R.string.galahad_include,
-				R.string.galahad_rules, R.string.galahad_advantage);
+				R.string.galahad_rules, R.string.galahad_advantage, R.color.loyalBlue);
 	}
 
 	public void showBedivereRules(View view) {
 		showRules(R.string.bedivere, R.string.bedivere_include,
-				R.string.bedivere_rules, R.string.bedivere_advantage);
+				R.string.bedivere_rules, R.string.bedivere_advantage, R.color.loyalBlue);
 	}
 
 	private void showRules(int titleId, int includeId, int rulesId,
-			int advantageId) {
+			int advantageId, int titleColorId) {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// Get the layout inflater
@@ -86,6 +82,7 @@ public class MainActivity extends Activity {
 
 		TextView titleView = (TextView)dialogView.findViewById(R.id.dialog_title);
 		titleView.setText(titleId);
+		titleView.setBackgroundResource(titleColorId);
 		
 		TextView includeView = (TextView)dialogView.findViewById(R.id.dialog_include);
 		includeView.setText(includeId);
