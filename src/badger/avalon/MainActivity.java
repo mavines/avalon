@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -43,7 +44,7 @@ public class MainActivity extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
-		trackList = new ArrayList();
+		trackList = new ArrayList<Integer>();
 	}
 
 	@Override
@@ -52,7 +53,32 @@ public class MainActivity extends Activity implements
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	        case R.id.action_settings:
+	            showSettings();
+	            return true;
+	        case R.id.action_credits:
+	            showCredits();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	private void showSettings()
+	{
+		Log.d(TAG, "Showing settings");
+	}
+	
+	private void showCredits()
+	{
+		Log.d(TAG, "Showing Credits");
+	}
+	
 	public void showGuinevereRules(View view) {
 		showRules(R.string.guinevere, R.string.guinevere_include,
 				R.string.guinevere_rules, R.string.guinevere_advantage,
@@ -272,6 +298,9 @@ public class MainActivity extends Activity implements
 	private void addGuinevere() {
 		if (guinevere) {
 			trackList.add(R.raw.guinevere);
+			pause();
+			
+			trackList.add(R.raw.guinevere_reset);
 			pause();
 		}
 	}

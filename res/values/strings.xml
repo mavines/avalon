@@ -3,11 +3,12 @@
 
     <string name="app_name">Avalon</string>
     <string name="action_settings">Settings</string>
+    <string name="action_credits">Credits</string>
     <string name="hello_world">Hello world!</string>
     <string name="merlin">Merlin</string>
     <string name="morganna">Morganna</string>
     <string name="percival">Percival</string>
-    <string name="lancelot">Lancelot</string>
+    <string name="lancelot">Lancelot #3</string>
     <string name="guinevere">Guinevere</string>
     <string name="galahad">Galahad</string>
     <string name="bedivere">Bedivere</string>
