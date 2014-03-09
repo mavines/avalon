@@ -7,9 +7,12 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -38,6 +41,9 @@ public class MainActivity extends Activity implements
 	private boolean mordred = false;
 	private boolean oberon = false;
 	private boolean lancelot = false;
+	
+	private String voicePreference;
+	private Voice activeVoice;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,32 +59,31 @@ public class MainActivity extends Activity implements
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	        case R.id.action_settings:
-	            showSettings();
-	            return true;
-	        case R.id.action_credits:
-	            showCredits();
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			showSettings();
+			return true;
+		case R.id.action_credits:
+			showCredits();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
-	
-	private void showSettings()
-	{
+
+	private void showSettings() {
 		Log.d(TAG, "Showing settings");
+		startActivity(new Intent(this, SettingsActivity.class));
 	}
-	
-	private void showCredits()
-	{
+
+	private void showCredits() {
 		Log.d(TAG, "Showing Credits");
 	}
-	
+
 	public void showGuinevereRules(View view) {
 		showRules(R.string.guinevere, R.string.guinevere_include,
 				R.string.guinevere_rules, R.string.guinevere_advantage,
@@ -137,16 +142,15 @@ public class MainActivity extends Activity implements
 	}
 
 	public void start(View view) {
-		Log.d(TAG, "Starting!");
-
 		if (mediaPlayer != null && mediaPlayer.isPlaying()) {
 			Log.d(TAG, "Stopping!");
 			mediaPlayer.stop();
-			mediaPlayer.release();
 
 			Button startButton = (Button) findViewById(R.id.startButton);
 			startButton.setText(R.string.start);
 		} else {
+			Log.d(TAG, "Starting!");
+
 			Button startButton = (Button) findViewById(R.id.startButton);
 			startButton.setText(R.string.stop);
 
@@ -183,6 +187,16 @@ public class MainActivity extends Activity implements
 
 	private void playClip() {
 		trackList.clear();
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		voicePreference = sharedPref.getString(SettingsActivity.VOICE_PREFERENCE, "");
+		if(voicePreference.equals(getString(R.string.female_voice)))
+		{
+			activeVoice = new FemaleVoice();
+		}
+		else
+		{
+			activeVoice = new MaleVoice();
+		}
 		addStartPhase();
 		addMinions();
 		addMerlin();
@@ -216,7 +230,7 @@ public class MainActivity extends Activity implements
 	}
 
 	private void addStartPhase() {
-		trackList.add(R.raw.start);
+		trackList.add(activeVoice.getStart());
 	}
 
 	private void pause() {
@@ -229,18 +243,18 @@ public class MainActivity extends Activity implements
 
 	private void addMinions() {
 		if (oberon && lancelot) {
-			trackList.add(R.raw.minion_yes_oberon_yes_lancelot);
+			trackList.add(activeVoice.getMinionYesLancelotYesOberon());
 		} else if (oberon && !lancelot) {
-			trackList.add(R.raw.minion_yes_oberon_no_lancelot);
+			trackList.add(activeVoice.getMinionNoLancelotYesOberon());
 		} else if (!oberon && lancelot) {
-			trackList.add(R.raw.minion_no_oberon_yes_lancelot);
+			trackList.add(activeVoice.getMinionYesLancelotNoOberon());
 		} else {
-			trackList.add(R.raw.minion_no_oberon_no_lancelot);
+			trackList.add(activeVoice.getMinionNoLancelotNoOberon());
 		}
 
 		pause();
 
-		trackList.add(R.raw.minion_reset);
+		trackList.add(activeVoice.getMinionReset());
 
 		pause();
 	}
@@ -251,14 +265,14 @@ public class MainActivity extends Activity implements
 		}
 
 		if (mordred) {
-			trackList.add(R.raw.merlin_yes_mordred);
+			trackList.add(activeVoice.getMerlinYesMordred());
 		} else {
-			trackList.add(R.raw.merlin_no_mordred);
+			trackList.add(activeVoice.getMerlinNoMordred());
 		}
 
 		pause();
 
-		trackList.add(R.raw.merlin_reset);
+		trackList.add(activeVoice.getMerlinReset());
 
 		pause();
 	}
@@ -269,14 +283,14 @@ public class MainActivity extends Activity implements
 		}
 
 		if (morganna) {
-			trackList.add(R.raw.percival_yes_morganna);
+			trackList.add(activeVoice.getPercivalYesMorganna());
 		} else {
-			trackList.add(R.raw.percival_no_morganna);
+			trackList.add(activeVoice.getPercivalNoMorganna());
 		}
 
 		pause();
 
-		trackList.add(R.raw.percival_reset);
+		trackList.add(activeVoice.getPercivalReset());
 
 		pause();
 	}
@@ -286,27 +300,27 @@ public class MainActivity extends Activity implements
 			return;
 		}
 
-		trackList.add(R.raw.lancelot);
+		trackList.add(activeVoice.getLancelot());
 
 		pause();
 
-		trackList.add(R.raw.lancelot_reset);
+		trackList.add(activeVoice.getLancelotReset());
 
 		pause();
 	}
 
 	private void addGuinevere() {
 		if (guinevere) {
-			trackList.add(R.raw.guinevere);
+			trackList.add(activeVoice.getGuinevere());
 			pause();
-			
-			trackList.add(R.raw.guinevere_reset);
+
+			trackList.add(activeVoice.getGuinevereReset());
 			pause();
 		}
 	}
 
 	private void addFinal() {
-		trackList.add(R.raw.final_reset);
+		trackList.add(activeVoice.getFinalReset());
 	}
 
 }
