@@ -30,5 +30,8 @@
     <string name="galahad_rules">When the loyal Galahad is forced to reveal his loyalty card to the Lady of the Lake, he must select the card that indicates he is a minion of Mordred.</string>
     <string name="galahad_advantage">Galahad is an advantage to the minions of Mordred.</string>
     <string name="ok">Okay</string>
+    <string name="credits_title">Credits</string>
+    <string name="avalon_credit">The Resistance: Avalon can be purchased from <a href="http://www.indieboardsandcards.com/RESAvalon.php">Indie Games and Cards.</a></string>
+    <string name="new_roles_credits">Credit to <a href="http://reddit.com/r/boardgames">r/BoardGames</a> and <a href=">http://www.boardgamegeek.com">Board Game Geek</a> for the additional roles of Bedivere and Guinevere.</string>
 
 </resources>

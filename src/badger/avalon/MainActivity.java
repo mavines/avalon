@@ -41,7 +41,7 @@ public class MainActivity extends Activity implements
 	private boolean mordred = false;
 	private boolean oberon = false;
 	private boolean lancelot = false;
-	
+
 	private String voicePreference;
 	private Voice activeVoice;
 
@@ -82,6 +82,22 @@ public class MainActivity extends Activity implements
 
 	private void showCredits() {
 		Log.d(TAG, "Showing Credits");
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		// Get the layout inflater
+		LayoutInflater inflater = this.getLayoutInflater();
+
+		// Inflate and set the layout for the dialog
+		// Pass null as the parent view because its going in the dialog layout
+		View dialogView = inflater.inflate(R.layout.credits, null);
+		builder.setView(dialogView).setPositiveButton(R.string.ok,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.dismiss();
+					}
+				});
+
+		AlertDialog dialog = builder.create();
+		dialog.show();
 	}
 
 	public void showGuinevereRules(View view) {
@@ -187,14 +203,13 @@ public class MainActivity extends Activity implements
 
 	private void playClip() {
 		trackList.clear();
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-		voicePreference = sharedPref.getString(SettingsActivity.VOICE_PREFERENCE, "");
-		if(voicePreference.equals(getString(R.string.female_voice)))
-		{
+		SharedPreferences sharedPref = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		voicePreference = sharedPref.getString(
+				SettingsActivity.VOICE_PREFERENCE, "");
+		if (voicePreference.equals(getString(R.string.female_voice))) {
 			activeVoice = new FemaleVoice();
-		}
-		else
-		{
+		} else {
 			activeVoice = new MaleVoice();
 		}
 		addStartPhase();
