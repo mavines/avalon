@@ -232,13 +232,14 @@ public class MainActivity extends Activity implements
 	}
 
 	public void onCompletion(MediaPlayer player) {
-		mediaPlayer.release();
 		if (trackIterator.hasNext()) {
+			mediaPlayer.release();
 			mediaPlayer = MediaPlayer.create(getApplicationContext(),
 					trackIterator.next());
 			mediaPlayer.setOnCompletionListener(this);
 			mediaPlayer.start();
 		} else {
+			mediaPlayer.stop();
 			Button startButton = (Button) findViewById(R.id.startButton);
 			startButton.setText(R.string.start);
 		}
